@@ -1,0 +1,26 @@
+extends layouts/layout.pug
+block content
+  if typeof errorMessage !== 'undefined'
+    each error in errorMessage
+      div(class="mt-1 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative")
+        p.error #{error.msg}
+
+  div(class="min-h-96 flex justify-center items-center")
+    form(action="/user/register", method="POST", class="space-y-4 w-full max-w-md")
+      div
+        label(for="name", class="block text-sm font-medium text-gray-700") Name
+        input(type="text", name="name", placeholder="Enter Name", class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value=formData ? formData.name : '')
+
+      div
+        label(for="email", class="block text-sm font-medium text-gray-700") Email
+        input(type="email", name="email", placeholder="Enter Email", class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value=formData ? formData.email : '')
+
+      div
+        label(for="username", class="block text-sm font-medium text-gray-700") Username
+        input(type="text", name="username", placeholder="Enter Username", class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value=formData ? formData.username : '')
+
+      div
+        label(for="password", class="block text-sm font-medium text-gray-700") Password
+        input(type="password", name="password", placeholder="Enter Password", class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm")
+
+      input(type="submit", value="Register", class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500")

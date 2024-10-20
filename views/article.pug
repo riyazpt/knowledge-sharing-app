@@ -1,0 +1,14 @@
+extends layouts/layout.pug
+block content
+ div.flex.justify-center
+    div.w-full.max-w-4xl 
+        h1.text-3xl.font-bold.text-gray-800 #{articles.title}
+        h5.text-xl.font-bold.text-gray-800 by #{author}
+        if user
+            if user.id==articles.author
+            
+                a.text-blue-500.rounded(href="/article/edit/" + articles._id)
+                    button.bg-blue-500.text-white.font-bold.py-2.px-4.rounded
+                            | Edit
+
+ 

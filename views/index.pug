@@ -1,0 +1,24 @@
+extends layouts/layout.pug
+block content
+  h1 #{title}
+  if articles.length > 0
+    div.flex.justify-center
+      div.w-full.max-w-4xl 
+        ul.list-disc
+          each article in articles
+            li.mb-4
+              div.grid.grid-cols-2.gap-4.justify-center.items-center
+              
+                a.text-blue-500.font-bold.text-lg.mb-4(href="article/" + article._id)= article.title
+                if user
+                  form(action='/article/' + article._id + '?_method=DELETE', method='POST')
+                    input(type='submit', value='Delete', class='btn-delete bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600')
+
+              
+
+  else
+    div.flex.justify-center
+      div.w-full.max-w-4xl 
+        p.mt-4 
+          b No articles found.
+    

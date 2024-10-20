@@ -1,0 +1,6 @@
+.messages
+  ul
+    each type in Object.keys(messages)
+      each message in messages[type]
+        li(class=`p-4 mb-4 rounded-lg ${type === 'success' ? 'bg-green-100 border border-green-400 text-green-700' : ''} ${type === 'error' ? 'bg-red-100 border border-red-400 text-red-700' : ''} ${type === 'warning' ? 'bg-yellow-100 border border-yellow-400 text-yellow-700' : ''} ${type === 'info' ? 'bg-blue-100 border border-blue-400 text-blue-700' : ''}`)
+          | #{message}
